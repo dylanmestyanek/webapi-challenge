@@ -1,8 +1,7 @@
 const express = require("express");
 const server = express();
 
-const projectsRouter = require("./routes/projectsRouter");
-
+const projectsRouter = require("./routes/projects/projectsRouter");
 
 // Custom Logger Middleware
 const logger = (req, res, next) => {
