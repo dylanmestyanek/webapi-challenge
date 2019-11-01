@@ -20,6 +20,17 @@ router.get("/:id", validateProjectId, (req, res) => {
     .catch(err => res.status(500).json({ error: `Failed to get project with id:${id}.` }))
 })
 
+// Get project's actions
+router.get("/:id/actions", validateProjectId, (req, res) => {
+    db.getProjectActions(req.user)
+    .then(actions => {
+        if (!actions.length) {
+            res.status(404).json({ message: "This project does not have any actions." })
+        } else res.status(200).json(actions)
+    })
+    .catch(err => res.status(500).json({ error: `Failed to get actions for project with id:${id}.` }))
+})
+
 // Add new project
 router.post("/", validateProject, (req, res) => {
     db.insert(req.body)

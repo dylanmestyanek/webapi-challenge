@@ -1,5 +1,6 @@
 const db = require("../../data/helpers/projectModel");
 
+// Check if ID exists
 const validateProjectId = (req, res, next) => {
     const id = req.params.id;
 
@@ -13,6 +14,7 @@ const validateProjectId = (req, res, next) => {
     .catch(err => res.status(500).json({ error: `Failed to get project with id of ${id}.` }))
 }
 
+// Check if there is a req.body, and if the req.body has required keys
 const validateProject = (req, res, next) => {
     const projectObj = req.body;
 
