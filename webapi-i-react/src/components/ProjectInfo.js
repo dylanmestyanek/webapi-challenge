@@ -20,8 +20,8 @@ const ProjectInfo = props => {
     const handleSubmit = e => {
         e.preventDefault();
         axios.post(`http://localhost:4000/api/projects/${project.id}/actions`, newAction)
-        .then(res => props.setProjects([
-            ...props.projects,
+        .then(res => setActions([
+            ...actions,
             res.data
         ]))
         .catch(err => console.log("Idiot", err))
