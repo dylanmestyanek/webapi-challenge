@@ -7,7 +7,7 @@ const validateProjectId = (req, res, next) => {
     db.get(id)
     .then(post => {
         if (post){
-            req.user = id;
+            req.projectId = id;
             next();
         } else res.status(404).json({ message: `Project with id:${id} does not exist.` })
     })

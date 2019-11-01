@@ -2,6 +2,7 @@ const express = require("express");
 const server = express();
 
 const projectsRouter = require("./routes/projects/projectsRouter");
+const actionsRouter = require("./routes/actions/actionsRouter")
 
 // Custom Logger Middleware
 const logger = (req, res, next) => {
@@ -12,5 +13,6 @@ const logger = (req, res, next) => {
 server.use(express.json());
 server.use(logger);
 server.use("/api/projects", projectsRouter);
+server.use("/api/actions", actionsRouter);
 
 server.listen(4000, () => console.log("\n=== Boom! Server is now listening on port 4000! ===\n"))
